@@ -1,9 +1,21 @@
 # load packages ----
 library(shiny)
+library(palmerpenguins)
+library(bslib)
+library(DT)
+library(tidyverse)
+
 
 # user interface ----
 # fluidPage() has instructions for how to make dynamic website (one that changes with window size)
 ui <- fluidPage(
+  
+  theme = bs_theme(
+    bg = "#A36f6f",
+    fg = "#FDF7f7",
+    primary = "#483132",
+    base_font = font_google("Poppins")
+  ),
   
   # app title ----
   tags$h1("My App Title"),

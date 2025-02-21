@@ -6,7 +6,21 @@ ui <- navbarPage(
   # (Page 1) intro tabPanel ----
   tabPanel(title = "About this app",
            
-           "background info will go here"), # END (Page 1) intro tabPanel
+           # intro text fluidRow ----
+           fluidRow(
+             
+             column(1),
+             column(10, includeMarkdown("text/about.md")),
+             column(1)
+             
+           ), # END intro text fluidRow
+           
+           hr(),
+           
+           # footer text ----
+           includeMarkdown("text/footer.md")
+           
+  ), # END (Page 1) intro tabPanel
   
   # (Page 2) data viz tabPanel ----
   tabPanel(title = "Explore the Data",
@@ -51,7 +65,9 @@ ui <- navbarPage(
                         mainPanel(
                           
                           # trout scatterplot output ----
-                          plotOutput(outputId = "trout_scatterplot_output")
+                          plotOutput(outputId = "trout_scatterplot_output") %>% 
+                            withSpinner(color = "dodgerblue")
+                            
                         ), # END trout mainPanel
                         
                       ) # END trout sidebarLayout)
@@ -86,7 +102,8 @@ ui <- navbarPage(
                         mainPanel(
                           
                           # penguin histogram
-                          plotOutput(outputId = "penguin_histogram_output")
+                          plotOutput(outputId = "penguin_histogram_output") %>% 
+                            withSpinner(color = "hotpink", type = 4, size = 2)
                         ),# END penguin mainPanel
                         
                       ) # END penguin sidebarlayout
